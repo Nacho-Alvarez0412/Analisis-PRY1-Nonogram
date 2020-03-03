@@ -21,8 +21,7 @@ public class MainMenuScripts : MonoBehaviour
     
     public void loadNonogram()
     {
-        Debug.Log("Loading Nonogram!!!");
-        string path = EditorUtility.OpenFilePanel("Choose txt file", "","txt");
+        string path = EditorUtility.OpenFilePanel("Choose nonogram txt file", "","txt");
         int[][] matrix = readTextFile(path);
     }
     
