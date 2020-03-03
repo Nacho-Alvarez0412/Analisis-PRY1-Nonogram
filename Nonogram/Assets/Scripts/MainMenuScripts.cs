@@ -31,8 +31,8 @@ public class MainMenuScripts : MonoBehaviour
         StreamReader inp_stm = new StreamReader(file_path);
         bool first = true;
         int[][] matrix= new int[1][];
-        Vector2[] hintsFilas = new Vector2[1];
-        Vector2[] hintsColumnas = new Vector2[1];
+        int[][] hintsFilas = new int[1][];
+        int[][] hintsColumnas = new int[1][];
         int x=0;
         int y=0;
         int counterX=0;
@@ -53,8 +53,8 @@ public class MainMenuScripts : MonoBehaviour
                 y = int.Parse(matrix_lenght[1]);
                 matrix = new int[x][];
                 
-                hintsFilas = new Vector2[x];
-                hintsColumnas = new Vector2[y];
+                hintsFilas = new int[x][];
+                hintsColumnas = new int[y][];
                 
                 for (int i = 0; i < matrix.Length; i++)
                 {
@@ -70,27 +70,31 @@ public class MainMenuScripts : MonoBehaviour
                 
                 if (counterX < x)
                 {
-                    try
+                    
+                    int[] localHints = new int[hint.Length];
+                    
+                    for (int i = 0; i < hint.Length; i++)
                     {
-                        hintsFilas[counterX] = new Vector2(int.Parse(hint[0]), int.Parse(hint[1]));
+                        localHints[i] = int.Parse(hint[i]);
                     }
-                    catch (Exception e)
-                    {
-                        hintsFilas[counterX] = new Vector2(int.Parse(hint[0]), 0);
-                    }
+
+                    hintsFilas[counterX] = localHints;
 
                     counterX++;
                 }
                 else if (counterY < y)
                 {
-                    try
+                    
+                    
+                    int[] localHints = new int[hint.Length];
+                    
+                    for (int i = 0; i < hint.Length; i++)
                     {
-                        hintsColumnas[counterY] = new Vector2(int.Parse(hint[0]), int.Parse(hint[1]));
+                        localHints[i] = int.Parse(hint[i]);
                     }
-                    catch (Exception e)
-                    {
-                        hintsColumnas[counterY] = new Vector2(int.Parse(hint[0]), 0);
-                    }
+
+                    hintsColumnas[counterY] = localHints;
+
                     counterY++;
                 }
             }
@@ -99,18 +103,17 @@ public class MainMenuScripts : MonoBehaviour
         }
 
         inp_stm.Close( );
+        
         Debug.Log("VECTORES DE HINTS");
         Debug.Log("FILAS");
         foreach (var num in hintsFilas)
         {
-            Debug.Log(num.x);
-            Debug.Log(num.y);
+            Debug.Log(num[0]);
         }
         Debug.Log("COLUMNAS");
         foreach (var num in hintsColumnas)
         {
-            Debug.Log(num.x);
-            Debug.Log(num.y);
+            Debug.Log(num[0]);
         }
         return matrix;
     }
