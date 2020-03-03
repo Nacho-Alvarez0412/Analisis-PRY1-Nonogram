@@ -5,8 +5,11 @@ PluginImporter:
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
   - first:
       '': Any
@@ -18,7 +21,7 @@ PluginImporter:
         Exclude PSP2: 1
         Exclude Switch: 1
         Exclude WiiU: 1
-        Exclude XboxOne: 1  
+        Exclude XboxOne: 1
   - first:
       Any: 
     second:
@@ -32,7 +35,12 @@ PluginImporter:
         CPU: AnyCPU
         DefaultValueInitialized: true
         OS: AnyOS
+  - first:
+      Windows Store Apps: WindowsStoreApps
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-

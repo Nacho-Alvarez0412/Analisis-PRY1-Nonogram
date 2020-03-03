@@ -332,14 +332,8 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.17f1/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/sebasgamboa/Documents/GitHub/Analisis de Algoritmos/Nonogram-Analisis-de-Algoritmos-/Nonogram/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/sebasgamboa/Documents/GitHub/Analisis de Algoritmos/Nonogram-Analisis-de-Algoritmos-/Nonogram/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/sebasgamboa/Documents/GitHub/Analisis de Algoritmos/Nonogram-Analisis-de-Algoritmos-/Nonogram/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/sebasgamboa/Documents/GitHub/Analisis de Algoritmos/Nonogram-Analisis-de-Algoritmos-/Nonogram/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.17f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

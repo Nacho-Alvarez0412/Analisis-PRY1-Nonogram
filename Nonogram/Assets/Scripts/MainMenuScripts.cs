@@ -38,8 +38,13 @@ public class MainMenuScripts : MonoBehaviour
             if (first)
             {
                 //matrix = new int[][];
+                string[] matrix_lenght = inp_ln.Split(","[0]);
+                Debug.Log(matrix_lenght[0]);
+                Debug.Log(matrix_lenght[1]);
+                first = !first;
             }
             Debug.Log(inp_ln);
+            
         }
 
         inp_stm.Close( );  

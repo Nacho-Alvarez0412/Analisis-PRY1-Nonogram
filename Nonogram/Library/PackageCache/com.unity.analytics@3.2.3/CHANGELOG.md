@@ -1,3 +1,6 @@
+## [3.2.3] - 2019-10-29
+- Add a fix for the deprecated API build time warning on webgl platform while using Data Privacy service.
+
 ## [3.2.2] - 2018-11-02
 - Removed FetchOptOutStatus and Initialize call. All application of opt out
   status will be handled by the engine. The Analytics/Data Privacy package still
