@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
 
 public class NonogramGenerator : MonoBehaviour
@@ -9,16 +11,43 @@ public class NonogramGenerator : MonoBehaviour
     private RectTransform nonogramContainer;
     [SerializeField] private Sprite markedTile;
     [SerializeField] private Sprite unmarkedTile;
+    [SerializeField] private TMP_ColorGradient gradient;
 
     private void Awake()
     {
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
-        int[] array = new int[3];
-        int[][] matrix = new int[3][];
+        int[] array = new int[7];
+        int[] array1 = new int[1];
+        
+        int[][] xHints = new int[7][];
+        int[][] yHints = new int[7][];
+        
+        int[][] matrix = new int[7][];
         matrix[0] = array;
         matrix[1] = array;
         matrix[2] = array;
-        showNonogram(matrix);
+        matrix[3] = array;
+        matrix[4] = array;
+        matrix[5] = array;
+        matrix[6] = array;
+        
+        xHints[0] = array1;
+        xHints[1] = array1;
+        xHints[2] = array1;
+        xHints[3] = array1;
+        xHints[4] = array1;
+        xHints[5] = array1;
+        xHints[6] = array1;
+        
+        yHints[0] = array1;
+        yHints[1] = array1;
+        yHints[2] = array1;
+        yHints[3] = array1;
+        yHints[4] = array1;
+        yHints[5] = array1;
+        yHints[6] = array1;
+        showNonogram(matrix,xHints,yHints);
+        
     }
 
     private void createUnmarkedTile(Vector2 anchoredPosition,float size)
@@ -34,36 +63,65 @@ public class NonogramGenerator : MonoBehaviour
         rectTransform.anchorMax = new Vector2(0,0);
     }
 
-    private void showNonogram(int[][] matrix)
+    private void createHint(Vector2 anchoredPosition,String text,float size)
+    {
+        GameObject gameObject = new GameObject("HintTextMesh",typeof(TextMeshProUGUI));
+        gameObject.transform.SetParent(nonogramContainer,false);
+        gameObject.GetComponent<TextMeshProUGUI>().text = text;
+        gameObject.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+        gameObject.GetComponent<TextMeshProUGUI>().enableVertexGradient = true;
+        gameObject.GetComponent<TextMeshProUGUI>().colorGradientPreset = gradient;
+        gameObject.GetComponent<TextMeshProUGUI>().fontSize = size;
+        
+        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = anchoredPosition;
+
+        rectTransform.sizeDelta = new Vector2(size, size);
+        rectTransform.anchorMin = new Vector2(0,0);
+        rectTransform.anchorMax = new Vector2(0,0);
+        
+
+    }
+
+    private void showNonogram(int[][] matrix,int[][] xHints,int[][] yHints)
     {
         float nonogramHeight = nonogramContainer.sizeDelta.y;
         float nonogramLenght = nonogramContainer.sizeDelta.x;
-        float sizeX = (nonogramLenght / matrix[0].Length) -10;
-        float sizeY = (nonogramHeight / matrix.Length) - 10;
-        float xSize = sizeX / 32;
+        float size = (nonogramLenght / matrix[0].Length) -10;
+        float space = size / 32;
+        
+        while (matrix.Length*(size + space) >= nonogramHeight)
+        {
+            size -= 50;
+        }
+
+        float startingPoint = (nonogramLenght / matrix[0].Length)-100;
         
         for (int i = 0; i < matrix.Length; i++)
         {
-            float yPosition = nonogramHeight - 100 - i * sizeX;
+            float yPosition = nonogramHeight - 100 - i * size;
             if (i!=0)
             {
-                yPosition -= xSize*i;
+                yPosition -= space*i;
             }
 
             for (int j = 0; j < matrix[i].Length; j++)
             {
-                float xPosition = 100 + j * sizeX+xSize;
+                float xPosition = (100 + j * size+space)+startingPoint;
                 if (j!=0)
                 {
-                    xPosition += xSize*j;
+                    xPosition += space*j;
                 }
-
-                while (matrix.Length*(sizeX + xSize) >= nonogramHeight)
+                createUnmarkedTile(new Vector2(xPosition,yPosition),size);
+                if (i == 0)
                 {
-                    sizeX -= 50;
+                    createHint(new Vector2(xPosition, nonogramHeight - 50), "5\n6", size / 4);
                 }
-                createUnmarkedTile(new Vector2(xPosition,yPosition),sizeX);
             }
+            createHint(new Vector2(startingPoint+50, yPosition), "56", size / 4);
+            
         }
     }
+    
+    
 }

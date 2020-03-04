@@ -361,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markedTile: {fileID: 21300000, guid: b33f4423aff3e0040b870e39f20e8ffd, type: 3}
   unmarkedTile: {fileID: 21300000, guid: 09612066f36e87a42b19a162cc3880dd, type: 3}
+  gradient: {fileID: 11400000, guid: 217a1a878a99df8478c49e20b39d53af, type: 2}
 --- !u!1 &886417255
 GameObject:
   m_ObjectHideFlags: 0
