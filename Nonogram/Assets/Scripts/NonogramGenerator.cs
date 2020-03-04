@@ -17,7 +17,7 @@ public class NonogramGenerator : MonoBehaviour
     {
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
         int[] array = new int[7];
-        int[] array1 = new int[1];
+        int[] array1 = new int[4] {1, 2, 3, 4};
         
         int[][] xHints = new int[7][];
         int[][] yHints = new int[7][];
@@ -115,11 +115,22 @@ public class NonogramGenerator : MonoBehaviour
                 createUnmarkedTile(new Vector2(xPosition,yPosition),size);
                 if (i == 0)
                 {
-                    createHint(new Vector2(xPosition, nonogramHeight - 50), "5\n6", size / 4);
+                    String text = "";
+                    for (int k = 0; k < yHints[j].Length; k++)
+                    {
+                        text += yHints[j][k] + "\n";
+                    }
+                    createHint(new Vector2(xPosition, nonogramHeight - 50), text, (size / 4)-yHints[i].Length);
                 }
             }
-            createHint(new Vector2(startingPoint+50, yPosition), "56", size / 4);
-            
+
+            string text1 = "";
+            for (int k = 0; k < xHints[i].Length; k++)
+                {
+                    text1 += yHints[i][k] + " ";
+                }
+                createHint(new Vector2(startingPoint+50, yPosition), text1, (size / 4)-xHints[i].Length);
+
         }
     }
     
