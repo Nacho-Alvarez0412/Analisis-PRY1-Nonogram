@@ -16,20 +16,19 @@ public class NonogramGenerator : MonoBehaviour
     private void Awake()
     {
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
-        int[] array = new int[7];
-        int[] array1 = new int[4] {1, 2, 3, 4};
+        int[] array = new int[6];
+        int[] array1 = new int[2] {1, 2};
         
-        int[][] xHints = new int[7][];
-        int[][] yHints = new int[7][];
+        int[][] xHints = new int[6][];
+        int[][] yHints = new int[6][];
         
-        int[][] matrix = new int[7][];
+        int[][] matrix = new int[6][];
         matrix[0] = array;
         matrix[1] = array;
         matrix[2] = array;
         matrix[3] = array;
         matrix[4] = array;
         matrix[5] = array;
-        matrix[6] = array;
         
         xHints[0] = array1;
         xHints[1] = array1;
@@ -37,7 +36,6 @@ public class NonogramGenerator : MonoBehaviour
         xHints[3] = array1;
         xHints[4] = array1;
         xHints[5] = array1;
-        xHints[6] = array1;
         
         yHints[0] = array1;
         yHints[1] = array1;
@@ -45,7 +43,6 @@ public class NonogramGenerator : MonoBehaviour
         yHints[3] = array1;
         yHints[4] = array1;
         yHints[5] = array1;
-        yHints[6] = array1;
         showNonogram(matrix,xHints,yHints);
         
     }
@@ -120,7 +117,7 @@ public class NonogramGenerator : MonoBehaviour
                     {
                         text += yHints[j][k] + "\n";
                     }
-                    createHint(new Vector2(xPosition, nonogramHeight - 50), text, (size / 4)-yHints[i].Length);
+                    createHint(new Vector2(xPosition, nonogramHeight-30), text, (size / 4)-yHints[i].Length);
                 }
             }
 
