@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScripts : MonoBehaviour
 {
+    public static int[][] matrix;
+    public static int[][] xHints;
+    public static int[][] yHints;
     public void playGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -22,7 +25,7 @@ public class MainMenuScripts : MonoBehaviour
     public void loadNonogram()
     {
         string path = EditorUtility.OpenFilePanel("Choose nonogram txt file", "","txt");
-        int[][] matrix = readTextFile(path);
+        matrix = readTextFile(path);
     }
     
     public int[][] readTextFile(string file_path)
@@ -45,8 +48,6 @@ public class MainMenuScripts : MonoBehaviour
             {
                 string[] matrix_lenght = inp_ln.Split(","[0]);
                 
-                Debug.Log(matrix_lenght[0]);
-                Debug.Log(matrix_lenght[1]);
                 
                 x = int.Parse(matrix_lenght[0]);
                 y = int.Parse(matrix_lenght[1]);
@@ -64,7 +65,6 @@ public class MainMenuScripts : MonoBehaviour
             }
             else if (!inp_ln.Equals("FILAS")&& !inp_ln.Equals("COLUMNAS"))
             {
-                Debug.Log(inp_ln);
                 string[] hint = inp_ln.Split(","[0]);
                 
                 if (counterX < x)
@@ -98,22 +98,12 @@ public class MainMenuScripts : MonoBehaviour
                 }
             }
             
-            Debug.Log(inp_ln);
         }
 
         inp_stm.Close( );
-        
-        Debug.Log("VECTORES DE HINTS");
-        Debug.Log("FILAS");
-        foreach (var num in hintsFilas)
-        {
-            Debug.Log(num[0]);
-        }
-        Debug.Log("COLUMNAS");
-        foreach (var num in hintsColumnas)
-        {
-            Debug.Log(num[0]);
-        }
+
+        yHints = hintsColumnas;
+        xHints = hintsFilas;
         return matrix;
     }
 

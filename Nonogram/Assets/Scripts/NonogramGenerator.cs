@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
+using static MainMenuScripts;
 
 public class NonogramGenerator : MonoBehaviour
 {
@@ -12,38 +13,19 @@ public class NonogramGenerator : MonoBehaviour
     [SerializeField] private Sprite markedTile;
     [SerializeField] private Sprite unmarkedTile;
     [SerializeField] private TMP_ColorGradient gradient;
-
+    private int[][] nonogram;
+    private int[][] xHints;
+    private int[][] yHints;
     private void Awake()
     {
+        nonogram = MainMenuScripts.matrix;
+        xHints = MainMenuScripts.xHints;
+        yHints = MainMenuScripts.yHints;
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
-        int[] array = new int[6];
-        int[] array1 = new int[2] {1, 2};
-        
-        int[][] xHints = new int[6][];
-        int[][] yHints = new int[6][];
-        
-        int[][] matrix = new int[6][];
-        matrix[0] = array;
-        matrix[1] = array;
-        matrix[2] = array;
-        matrix[3] = array;
-        matrix[4] = array;
-        matrix[5] = array;
-        
-        xHints[0] = array1;
-        xHints[1] = array1;
-        xHints[2] = array1;
-        xHints[3] = array1;
-        xHints[4] = array1;
-        xHints[5] = array1;
-        
-        yHints[0] = array1;
-        yHints[1] = array1;
-        yHints[2] = array1;
-        yHints[3] = array1;
-        yHints[4] = array1;
-        yHints[5] = array1;
-        showNonogram(matrix,xHints,yHints);
+        Debug.Log(nonogram.Length);
+        Debug.Log(xHints.Length);
+        Debug.Log(yHints.Length);
+        showNonogram(nonogram,xHints,yHints);
         
     }
 
@@ -89,14 +71,15 @@ public class NonogramGenerator : MonoBehaviour
         
         while (matrix.Length*(size + space) >= nonogramHeight)
         {
-            size -= 50;
+            size -= 10;
         }
-
-        float startingPoint = (nonogramLenght / matrix[0].Length)-100;
+        
+        float startingXPoint = (nonogramLenght / matrix[0].Length)+100;
         
         for (int i = 0; i < matrix.Length; i++)
         {
-            float yPosition = nonogramHeight - 100 - i * size;
+            
+            float yPosition = nonogramHeight - 120 - i * size;
             if (i!=0)
             {
                 yPosition -= space*i;
@@ -104,7 +87,7 @@ public class NonogramGenerator : MonoBehaviour
 
             for (int j = 0; j < matrix[i].Length; j++)
             {
-                float xPosition = (100 + j * size+space)+startingPoint;
+                float xPosition = (100 + j * size+space)+startingXPoint;
                 if (j!=0)
                 {
                     xPosition += space*j;
@@ -117,16 +100,17 @@ public class NonogramGenerator : MonoBehaviour
                     {
                         text += yHints[j][k] + "\n";
                     }
-                    createHint(new Vector2(xPosition, nonogramHeight-30), text, (size / 4)-yHints[i].Length);
+                    createHint(new Vector2(xPosition, nonogramHeight-30), text, (size / 4));
                 }
             }
 
             string text1 = "";
             for (int k = 0; k < xHints[i].Length; k++)
-                {
-                    text1 += yHints[i][k] + " ";
-                }
-                createHint(new Vector2(startingPoint+50, yPosition), text1, (size / 4)-xHints[i].Length);
+            {
+                text1 += xHints[i][k] + " ";
+            }
+            Debug.Log(startingXPoint);
+            createHint(new Vector2(startingXPoint+matrix[0].Length, yPosition), text1, (size / 4) );
 
         }
     }
