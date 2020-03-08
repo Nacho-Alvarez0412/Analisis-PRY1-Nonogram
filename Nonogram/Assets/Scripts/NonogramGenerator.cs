@@ -27,6 +27,7 @@ public class NonogramGenerator : MonoBehaviour
         Debug.Log(yHints.Length);
         showNonogram(nonogram,xHints,yHints);
         
+        
     }
 
     private void createUnmarkedTile(Vector2 anchoredPosition,float size)
