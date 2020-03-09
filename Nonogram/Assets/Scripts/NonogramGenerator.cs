@@ -10,16 +10,16 @@ using static MainMenuScripts;
 public class NonogramGenerator : MonoBehaviour
 {
     private RectTransform nonogramContainer;
-    [SerializeField] public static Sprite markedTile;
     [SerializeField] private Sprite unmarkedTile;
     [SerializeField] private TMP_ColorGradient gradient;
     private int[][] nonogram;
     private int[][] xHints;
     private int[][] yHints;
-    public static GameObject[][] tiles = new GameObject[matrix.Length][];
+    public static GameObject[][] tiles;
     
     private void Awake()
     {
+        tiles = new GameObject[matrix.Length][];
         nonogram = MainMenuScripts.matrix;
         for (int i = 0; i < matrix.Length; i++)
         {
@@ -28,12 +28,7 @@ public class NonogramGenerator : MonoBehaviour
         xHints = MainMenuScripts.xHints;
         yHints = MainMenuScripts.yHints;
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
-        Debug.Log(nonogram.Length);
-        Debug.Log(xHints.Length);
-        Debug.Log(yHints.Length);
         showNonogram(nonogram,xHints,yHints);
-        
-        
     }
 
     private GameObject createUnmarkedTile(Vector2 anchoredPosition,float size)
@@ -120,7 +115,6 @@ public class NonogramGenerator : MonoBehaviour
             {
                 text1 += xHints[i][k] + " ";
             }
-            Debug.Log(startingXPoint);
             createHint(new Vector2(startingXPoint+matrix[0].Length, yPosition), text1, (size / 4) );
 
         }

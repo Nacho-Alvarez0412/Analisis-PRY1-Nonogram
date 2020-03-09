@@ -6,7 +6,7 @@ using  UnityEngine.UI;
 
 public class InGameScripts : MonoBehaviour
 {
-
+    [SerializeField] private Sprite markedTile;
     public void backToMenu()
     {
         SceneManager.LoadScene(0);
@@ -15,23 +15,21 @@ public class InGameScripts : MonoBehaviour
     public void solve()
     {
         int[][] nonogram = MainMenuScripts.matrix;
-        Debug.Log("Solving Nonogram");
         bool solved = solveAux(nonogram);
 
         if (!solved)
         {
-            Debug.Log("No se puede");
-            // return;
+            RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
+            popUp.anchoredPosition = new Vector2(0,0);
         }
 
         for (int i = 0; i < nonogram.Length; i++)
         {
             for (int j = 0; j < nonogram[i].Length; j++)
             {
-                Debug.Log(nonogram[i][j]);
                 if (nonogram[i][j] == 1)
                 {
-                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = NonogramGenerator.markedTile;
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = markedTile;
                 }
             }
         }
@@ -60,6 +58,12 @@ public class InGameScripts : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void closePopUp()
+    {
+        RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
+        popUp.anchoredPosition = new Vector2(5000,0);
     }
 
 
