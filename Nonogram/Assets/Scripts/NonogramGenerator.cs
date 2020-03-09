@@ -10,15 +10,21 @@ using static MainMenuScripts;
 public class NonogramGenerator : MonoBehaviour
 {
     private RectTransform nonogramContainer;
-    [SerializeField] private Sprite markedTile;
+    [SerializeField] public static Sprite markedTile;
     [SerializeField] private Sprite unmarkedTile;
     [SerializeField] private TMP_ColorGradient gradient;
     private int[][] nonogram;
     private int[][] xHints;
     private int[][] yHints;
+    public static GameObject[][] tiles = new GameObject[matrix.Length][];
+    
     private void Awake()
     {
         nonogram = MainMenuScripts.matrix;
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            tiles[i] = new GameObject[matrix.Length];
+        }
         xHints = MainMenuScripts.xHints;
         yHints = MainMenuScripts.yHints;
         nonogramContainer = transform.Find("NonogramHolder").GetComponent<RectTransform>();
@@ -30,7 +36,7 @@ public class NonogramGenerator : MonoBehaviour
         
     }
 
-    private void createUnmarkedTile(Vector2 anchoredPosition,float size)
+    private GameObject createUnmarkedTile(Vector2 anchoredPosition,float size)
     {
         GameObject gameObject = new GameObject("UnmarkedTile",typeof(Image));
         gameObject.transform.SetParent(nonogramContainer,false);
@@ -41,6 +47,8 @@ public class NonogramGenerator : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(size, size);
         rectTransform.anchorMin = new Vector2(0,0);
         rectTransform.anchorMax = new Vector2(0,0);
+
+        return gameObject;
     }
 
     private void createHint(Vector2 anchoredPosition,String text,float size)
@@ -88,12 +96,14 @@ public class NonogramGenerator : MonoBehaviour
 
             for (int j = 0; j < matrix[i].Length; j++)
             {
-                float xPosition = (100 + j * size+space)+startingXPoint;
+                float xPosition = (100 + j * size+space) + startingXPoint;
                 if (j!=0)
                 {
                     xPosition += space*j;
                 }
-                createUnmarkedTile(new Vector2(xPosition,yPosition),size);
+                
+                tiles[j][i] = createUnmarkedTile(new Vector2(xPosition,yPosition),size);
+                
                 if (i == 0)
                 {
                     String text = "";

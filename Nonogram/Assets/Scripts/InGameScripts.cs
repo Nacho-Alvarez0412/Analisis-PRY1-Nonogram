@@ -14,8 +14,54 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
+        int[][] nonogram = MainMenuScripts.matrix;
         Debug.Log("Solving Nonogram");
+        bool solved = solveAux(nonogram);
+
+        if (!solved)
+        {
+            Debug.Log("No se puede");
+            // return;
+        }
+
+        for (int i = 0; i < nonogram.Length; i++)
+        {
+            for (int j = 0; j < nonogram[i].Length; j++)
+            {
+                Debug.Log(nonogram[i][j]);
+                if (nonogram[i][j] == 1)
+                {
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = NonogramGenerator.markedTile;
+                }
+            }
+        }
+
+        
     }
+
+    public bool solveAux(int[][] nonogram)
+    {
+        Vector2? position = findEmpty(nonogram);
+
+        if (position == null)
+        {
+            return true;
+        }
+
+        for (int i = 1; i < 3; i++)
+        {
+            nonogram[(int) position.Value.x][(int) position.Value.y] = i;
+            
+            if (isValidNonogram(nonogram, position.Value) && solveAux(nonogram))
+            {
+                return true;
+            }
+            nonogram[(int) position.Value.x][(int) position.Value.y] = 0;
+        }
+
+        return false;
+    }
+
 
     public Vector2? findEmpty(int[][] matrix)
     {
@@ -33,25 +79,83 @@ public class InGameScripts : MonoBehaviour
         return null;
     }
 
-    public bool validAxisX(int[][] matrix, Vector2 pos, int[][] xHints, int[][] yHints)
+    public bool isValidNonogram(int[][] matrix, Vector2 pos)
     {
-        int counter = 0;
+        int[] colHints = MainMenuScripts.yHints[(int) pos.x];
+        int[] col = matrix[(int) pos.x];
         
-        for (int i = 0; i < matrix[0].Length; i++)
+        if (isValidList(colHints, col))
         {
-            if (matrix[(int) pos[0]][i] == 1)
+            int[] rowHints = MainMenuScripts.xHints[(int) pos.y];
+            int[] row = getMatrixRow(matrix, (int) pos.y);
+            
+            if (isValidList(rowHints, row))
             {
-                counter++;
+                return true;
             }
         }
 
-        if (counter >= yHints[(int) pos[0]][0])
+        return false;
+    }
+
+    private int[] getMatrixRow(int[][] matrix, int y)
+    {
+        int[] row = new int[matrix.Length];
+
+        for (int x = 0; x < matrix.Length; x++)
+        {
+            row[x] = matrix[x][y];
+        }
+
+        return row;
+    }
+
+    private bool isValidList(int[] hints, int[] list)
+    {
+        int counter = 0;
+        int blankSpaceCounter = 0;
+        List<int> resultHints = new List<int>();
+
+        int hintsSum = 0;
+        for (int i = 0; i < hints.Length; i++)
+        {
+            hintsSum += hints[i];
+        }
+        int maxBlankSpaces = list.Length - hintsSum;
+        
+        for (int i = 0; i < list.Length; i++)
+        {
+            if (list[i] == 1)
+            {
+                counter++;
+                if (i + 1 == list.Length || list[i + 1] == 2) {
+                    resultHints.Add(counter);
+                    counter = 0;
+                }
+            }
+            else if (list[i] == 2)
+            {
+                blankSpaceCounter++;
+            }
+            else if (list[i] == 0) break;
+        }
+
+        if (hints.Length < resultHints.Count)
         {
             return false;
         }
-        else
+
+        if (blankSpaceCounter > maxBlankSpaces)
         {
-            return true;
+            return false;
+        }
+        
+        for (int i = 0; i < resultHints.Count; i++)
+        {
+            if (hints[i] != resultHints[i])
+            {
+                return false;
+            }
         }
 
         return true;
