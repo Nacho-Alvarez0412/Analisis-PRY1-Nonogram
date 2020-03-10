@@ -11,6 +11,7 @@ public class InGameScripts : MonoBehaviour
     [SerializeField] private Sprite markedTile;
     [SerializeField] private Sprite unmarkedTile;
     int[][] nonogram = MainMenuScripts.matrix;
+    private float elapsedMiliseconds;
     
     public void backToMenu()
     {
@@ -19,13 +20,23 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
+        
+        var watch = new System.Diagnostics.Stopwatch();
+        watch.Start();
+        
         bool solved = solveAux(nonogram);
+        
+        watch.Stop();
+
+        elapsedMiliseconds = watch.ElapsedMilliseconds;
 
         if (!solved)
         {
             RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
             popUp.anchoredPosition = new Vector2(0,0);
         }
+        
+        Debug.Log(elapsedMiliseconds);
     }
 
     public bool solveAux(int[][] nonogram)
