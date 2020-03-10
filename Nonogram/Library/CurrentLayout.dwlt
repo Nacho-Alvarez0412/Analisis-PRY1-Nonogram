@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 11988
+  controlID: 192
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 11989
+  controlID: 223
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 12066
+  controlID: 224
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -487,9 +487,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 9e300000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5676fffff076fffff488fffff089ffff6e8fffffc090ffff1e96ffff8c96ffff6297ffffd09cffff3c9dffff5e9dffff029effff04a4ffff26a4ffffecb8ffff58c4ffff9ec4ffffd2dbffffbeddfffff2f5ffffe8340000ec340000063500007c38000080380000923800009a3800009c470000a0470000ba470000ca470000844a0000884a0000a24a0000b24a0000d24a00006c4d0000704d00008a4d00009a4d0000ba4d00000c4e0000104e00002a4e00003a4e00009451000098510000b2510000c2510000e2510000
+      m_ExpandedIDs: dcfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -577,7 +577,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -589,7 +589,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 82090000
     m_LastClickedID: 2434
-    m_ExpandedIDs: ffffffff000000005a2e0000a42e0000dc2e0000f62e0000a02f0000e42f0000f02f000034300000603000009c300000dc310000de310000e0310000
+    m_ExpandedIDs: ffffffff00000000fa090000540a00009e0a0000bc0a0000920b0000de0b0000ec0b0000400c0000720c0000ba0c00001a2b00001c2b00001e2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -617,21 +617,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 75}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000005a2e0000a42e0000dc2e0000f62e0000a02f0000e42f0000f02f000034300000603000009c300000dc310000de310000e0310000
+    m_ExpandedIDs: ffffffff00000000fa090000540a00009e0a0000bc0a0000920b0000de0b0000ec0b0000400c0000720c0000ba0c00001a2b00001c2b00001e2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: InGameScripts
+      m_OriginalName: InGameScripts
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1858
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 

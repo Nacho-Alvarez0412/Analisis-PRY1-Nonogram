@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using  UnityEngine.SceneManagement;
@@ -7,6 +8,9 @@ using  UnityEngine.UI;
 public class InGameScripts : MonoBehaviour
 {
     [SerializeField] private Sprite markedTile;
+    [SerializeField] private Sprite unmarkedTile;
+    int[][] nonogram = MainMenuScripts.matrix;
+    
     public void backToMenu()
     {
         SceneManager.LoadScene(0);
@@ -14,7 +18,7 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
-        int[][] nonogram = MainMenuScripts.matrix;
+        
         bool solved = solveAux(nonogram);
 
         if (!solved)
@@ -22,19 +26,8 @@ public class InGameScripts : MonoBehaviour
             RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
             popUp.anchoredPosition = new Vector2(0,0);
         }
-
-        for (int i = 0; i < nonogram.Length; i++)
-        {
-            for (int j = 0; j < nonogram[i].Length; j++)
-            {
-                if (nonogram[i][j] == 1)
-                {
-                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = markedTile;
-                }
-            }
-        }
-
         
+        refreshMatrix();
     }
 
     public bool solveAux(int[][] nonogram)
@@ -164,4 +157,23 @@ public class InGameScripts : MonoBehaviour
 
         return true;
     }
+
+    private void refreshMatrix()
+    {
+        for (int i = 0; i < nonogram.Length; i++)
+        {
+            for (int j = 0; j < nonogram[i].Length; j++)
+            {
+                if (nonogram[i][j] == 1)
+                {
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = markedTile;
+                }
+                else
+                {
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = unmarkedTile;
+                }
+            }
+        } 
+    }
+    
 }
