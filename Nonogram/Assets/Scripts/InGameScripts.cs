@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using  UnityEngine.SceneManagement;
@@ -12,6 +14,8 @@ public class InGameScripts : MonoBehaviour
     [SerializeField] private Sprite unmarkedTile;
     int[][] nonogram = MainMenuScripts.matrix;
     private float elapsedMiliseconds;
+    private Thread solverThread;
+    private bool hasSolution = false;
     
     public void backToMenu()
     {
@@ -20,7 +24,12 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
-        
+        solverThread = new Thread(new ThreadStart(startSolving));
+        solverThread.Start();
+    }
+
+    public void startSolving()
+    {
         var watch = new System.Diagnostics.Stopwatch();
         watch.Start();
         
@@ -32,11 +41,8 @@ public class InGameScripts : MonoBehaviour
 
         if (!solved)
         {
-            RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
-            popUp.anchoredPosition = new Vector2(0,0);
+            hasSolution = false;
         }
-        
-        Debug.Log(elapsedMiliseconds);
     }
 
     public bool solveAux(int[][] nonogram)
@@ -66,6 +72,7 @@ public class InGameScripts : MonoBehaviour
     {
         RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
         popUp.anchoredPosition = new Vector2(5000,0);
+        hasSolution = false;
     }
 
 
@@ -185,8 +192,21 @@ public class InGameScripts : MonoBehaviour
         } 
     }
 
+    private void updateTimer()
+    {
+        Transform timerText = transform.Find("TimeText (TMP)");
+        timerText.GetComponent<TextMeshProUGUI>().text = elapsedMiliseconds.ToString();
+    }
+
     private void OnGUI()
     {
         refreshMatrix();
+        updateTimer();
+
+        if (hasSolution)
+        {
+            RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
+            popUp.anchoredPosition = new Vector2(0,0);
+        }
     }
 }

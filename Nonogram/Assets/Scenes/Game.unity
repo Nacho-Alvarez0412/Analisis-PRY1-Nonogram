@@ -780,8 +780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -572.02, y: 39}
-  m_SizeDelta: {x: 136.4, y: 52}
+  m_AnchoredPosition: {x: -504, y: 40}
+  m_SizeDelta: {x: 237.9, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681069067
 MonoBehaviour:
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Timer
+  m_text: 'Timer (Miliseconds)
 
 '
   m_isRightToLeft: 0
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 6
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -873,12 +873,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 681069067}
-    characterCount: 6
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 2
+    wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1663,7 +1663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -572.02, y: 0}
+  m_AnchoredPosition: {x: -504, y: -56}
   m_SizeDelta: {x: 136.4, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586585072
