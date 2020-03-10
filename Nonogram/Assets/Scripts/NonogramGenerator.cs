@@ -59,7 +59,7 @@ public class NonogramGenerator : MonoBehaviour
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
 
-        rectTransform.sizeDelta = new Vector2(size, size);
+        rectTransform.sizeDelta = new Vector2(100, 100);
         rectTransform.anchorMin = new Vector2(0,0);
         rectTransform.anchorMax = new Vector2(0,0);
         

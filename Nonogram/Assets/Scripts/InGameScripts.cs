@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using  UnityEngine.SceneManagement;
 using  UnityEngine.UI;
@@ -18,7 +19,6 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
-        
         bool solved = solveAux(nonogram);
 
         if (!solved)
@@ -26,8 +26,6 @@ public class InGameScripts : MonoBehaviour
             RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
             popUp.anchoredPosition = new Vector2(0,0);
         }
-        
-        refreshMatrix();
     }
 
     public bool solveAux(int[][] nonogram)
@@ -175,5 +173,9 @@ public class InGameScripts : MonoBehaviour
             }
         } 
     }
-    
+
+    private void OnGUI()
+    {
+        refreshMatrix();
+    }
 }
