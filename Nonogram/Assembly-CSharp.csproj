@@ -120,9 +120,11 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Pruebas\Prueba(15x15) perra loca.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Pruebas\Prueba (15x20) cheton.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/sebasgamboa/Documents/GitHub/Analisis de Algoritmos/Nonogram-Analisis-de-Algoritmos-/Nonogram/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

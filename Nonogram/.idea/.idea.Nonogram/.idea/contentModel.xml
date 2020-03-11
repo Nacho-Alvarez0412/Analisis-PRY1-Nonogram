@@ -5,12 +5,17 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Pruebas" t="Include">
+          <e p="nonogram 10 x 10 2.0.txt" t="Include" />
+          <e p="nonogram 10 x 10 with 0.txt" t="Include" />
           <e p="Nonogram Palmera 15 x 15.txt" t="Include" />
           <e p="Prueba (10x10).txt" t="Include" />
+          <e p="Prueba (15x20) cheton.txt" t="Include" />
           <e p="Prueba (20x20).txt" t="Include" />
           <e p="Prueba (4x4).txt" t="Include" />
           <e p="Prueba (8x8).txt" t="Include" />
+          <e p="Prueba(15x15) perra loca.txt" t="Include" />
           <e p="Prueba(15x15).txt" t="Include" />
+          <e p="pruebaNonogram perrito.txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="InGameScripts.cs" t="Include" />
