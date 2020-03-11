@@ -15,7 +15,7 @@ public class InGameScripts : MonoBehaviour
     int[][] nonogram = MainMenuScripts.matrix;
     private float elapsedMiliseconds;
     private Thread solverThread;
-    private bool hasSolution = false;
+    private bool hasSolution = true;
     
     public void backToMenu()
     {
@@ -72,7 +72,7 @@ public class InGameScripts : MonoBehaviour
     {
         RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
         popUp.anchoredPosition = new Vector2(5000,0);
-        hasSolution = false;
+        hasSolution = true;
     }
 
 
@@ -203,7 +203,7 @@ public class InGameScripts : MonoBehaviour
         refreshMatrix();
         updateTimer();
 
-        if (hasSolution)
+        if (!hasSolution)
         {
             RectTransform popUp = transform.Find("MessageDialog").GetComponent<RectTransform>();
             popUp.anchoredPosition = new Vector2(0,0);
