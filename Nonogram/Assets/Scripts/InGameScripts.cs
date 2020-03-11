@@ -54,7 +54,7 @@ public class InGameScripts : MonoBehaviour
             return true;
         }
 
-        for (int i = 1; i < 3; i++)
+        for (int i = 2; i>0; i--)
         {
             nonogram[(int) position.Value.x][(int) position.Value.y] = i;
             
@@ -180,14 +180,23 @@ public class InGameScripts : MonoBehaviour
         {
             for (int j = 0; j < nonogram[i].Length; j++)
             {
-                if (nonogram[i][j] == 1)
+                try
                 {
-                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = markedTile;
+                    if (nonogram[j][i] == 1)
+                    {
+                        NonogramGenerator.tiles[j][i].GetComponent<Image>().sprite = markedTile;
+                    }
+                    else
+                    {
+                        NonogramGenerator.tiles[j][i].GetComponent<Image>().sprite = unmarkedTile;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = unmarkedTile;
+                    //Console.WriteLine(e);
+                    //throw;
                 }
+                
             }
         } 
     }
