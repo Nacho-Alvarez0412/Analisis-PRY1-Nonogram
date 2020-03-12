@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -21,9 +22,9 @@ public class NonogramGenerator : MonoBehaviour
     {
         tiles = new GameObject[matrix.Length][];
         nonogram = matrix;
-        for (int i = 0; i < matrix.Length; i++)
+        for (int i = 0; i < nonogram.Length; i++)
         {
-            tiles[i] = new GameObject[matrix[i].Length];
+            tiles[i] = new GameObject[nonogram[i].Length];
         }
         xHints = MainMenuScripts.xHints;
         yHints = MainMenuScripts.yHints;
@@ -89,7 +90,7 @@ public class NonogramGenerator : MonoBehaviour
                 yPosition -= space*i;
             }
 
-            for (int j = 0; j < matrix[i].Length; j++)
+            for (int j = 0; j < matrix[0].Length; j++)
             {
                 float xPosition = (100 + j * size+space) + startingXPoint;
                 if (j!=0)
@@ -116,8 +117,8 @@ public class NonogramGenerator : MonoBehaviour
                 text1 += xHints[i][k] + " ";
             }
             createHint(new Vector2(startingXPoint+matrix[0].Length, yPosition), text1, (size / 4) );
-
         }
+        
     }
     
     

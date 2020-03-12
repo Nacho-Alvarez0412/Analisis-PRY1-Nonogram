@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEditor;
@@ -24,6 +25,11 @@ public class InGameScripts : MonoBehaviour
 
     public void solve()
     {
+        /*NonogramGenerator.tiles.Reverse();
+        foreach (var list in NonogramGenerator.tiles)
+        {
+            list.Reverse();
+        }*/
         solverThread = new Thread(new ThreadStart(startSolving));
         solverThread.Start();
     }
@@ -94,12 +100,12 @@ public class InGameScripts : MonoBehaviour
 
     public bool isValidNonogram(int[][] matrix, Vector2 pos)
     {
-        int[] colHints = MainMenuScripts.yHints[(int) pos.x];
+        int[] colHints = MainMenuScripts.xHints[(int) pos.x];
         int[] col = matrix[(int) pos.x];
         
         if (isValidList(colHints, col))
         {
-            int[] rowHints = MainMenuScripts.xHints[(int) pos.y];
+            int[] rowHints = MainMenuScripts.yHints[(int) pos.y];
             int[] row = getMatrixRow(matrix, (int) pos.y);
             
             if (isValidList(rowHints, row))
@@ -200,7 +206,7 @@ public class InGameScripts : MonoBehaviour
 
     private void OnGUI()
     {
-        Debug.Log(MainMenuScripts.matrix[0][14]); 
+        //Debug.Log(MainMenuScripts.matrix[0][14]); 
         refreshMatrix();
         updateTimer();
 
