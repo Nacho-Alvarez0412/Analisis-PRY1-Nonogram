@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
 using static MainMenuScripts;
 
@@ -69,14 +65,23 @@ public class NonogramGenerator : MonoBehaviour
 
     private void showNonogram(int[][] matrix,int[][] xHints,int[][] yHints)
     {
-        float nonogramHeight = nonogramContainer.sizeDelta.y;
-        float nonogramLenght = nonogramContainer.sizeDelta.x;
-        float size = (nonogramLenght / matrix[0].Length) -10;
+        float nonogramHeight = nonogramContainer.rect.height;
+        float nonogramLenght = nonogramContainer.rect.width;
+        float size;
+        if (matrix.Length > matrix[0].Length)
+        {
+            size = (nonogramLenght / matrix.Length);
+        }
+        else
+        {
+            size = (nonogramHeight / matrix[0].Length);   
+        }
+         
         float space = size / 32;
         
         while (matrix.Length*(size + space) >= nonogramHeight)
         {
-            size -= 13;
+            size -= 15;
         }
         
         float startingXPoint = (nonogramLenght / matrix[0].Length)+100;
@@ -84,7 +89,7 @@ public class NonogramGenerator : MonoBehaviour
         for (int i = 0; i < matrix.Length; i++)
         {
             
-            float yPosition = nonogramHeight - 100 - i * size;
+            float yPosition = nonogramHeight - 130 - i * size;
             if (i!=0)
             {
                 yPosition -= space*i;
@@ -107,7 +112,7 @@ public class NonogramGenerator : MonoBehaviour
                     {
                         text += yHints[j][k] + "\n";
                     }
-                    createHint(new Vector2(xPosition, nonogramHeight-30), text, (size / 4));
+                    createHint(new Vector2(xPosition, nonogramHeight-80), text, (size / 4));
                 }
             }
 
