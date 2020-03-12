@@ -180,23 +180,14 @@ public class InGameScripts : MonoBehaviour
         {
             for (int j = 0; j < nonogram[i].Length; j++)
             {
-                try
+                if (nonogram[i][j] == 1)
                 {
-                    if (nonogram[j][i] == 1)
-                    {
-                        NonogramGenerator.tiles[j][i].GetComponent<Image>().sprite = markedTile;
-                    }
-                    else
-                    {
-                        NonogramGenerator.tiles[j][i].GetComponent<Image>().sprite = unmarkedTile;
-                    }
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = markedTile;
                 }
-                catch (Exception e)
+                else
                 {
-                    //Console.WriteLine(e);
-                    //throw;
+                    NonogramGenerator.tiles[i][j].GetComponent<Image>().sprite = unmarkedTile;
                 }
-                
             }
         } 
     }
@@ -209,6 +200,7 @@ public class InGameScripts : MonoBehaviour
 
     private void OnGUI()
     {
+        Debug.Log(MainMenuScripts.matrix[0][14]); 
         refreshMatrix();
         updateTimer();
 

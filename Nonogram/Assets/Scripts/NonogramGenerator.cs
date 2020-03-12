@@ -20,10 +20,10 @@ public class NonogramGenerator : MonoBehaviour
     private void Awake()
     {
         tiles = new GameObject[matrix.Length][];
-        nonogram = MainMenuScripts.matrix;
+        nonogram = matrix;
         for (int i = 0; i < matrix.Length; i++)
         {
-            tiles[i] = new GameObject[matrix.Length];
+            tiles[i] = new GameObject[matrix[i].Length];
         }
         xHints = MainMenuScripts.xHints;
         yHints = MainMenuScripts.yHints;
@@ -75,7 +75,7 @@ public class NonogramGenerator : MonoBehaviour
         
         while (matrix.Length*(size + space) >= nonogramHeight)
         {
-            size -= 10;
+            size -= 13;
         }
         
         float startingXPoint = (nonogramLenght / matrix[0].Length)+100;
@@ -83,7 +83,7 @@ public class NonogramGenerator : MonoBehaviour
         for (int i = 0; i < matrix.Length; i++)
         {
             
-            float yPosition = nonogramHeight - 120 - i * size;
+            float yPosition = nonogramHeight - 100 - i * size;
             if (i!=0)
             {
                 yPosition -= space*i;
@@ -97,7 +97,7 @@ public class NonogramGenerator : MonoBehaviour
                     xPosition += space*j;
                 }
                 
-                tiles[j][i] = createUnmarkedTile(new Vector2(xPosition,yPosition),size);
+                tiles[i][j] = createUnmarkedTile(new Vector2(xPosition,yPosition),size);
                 
                 if (i == 0)
                 {
