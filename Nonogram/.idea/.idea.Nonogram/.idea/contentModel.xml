@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\nacho\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\nacho\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Nonogram.-1022726313.00" t="ExcludeRecursive" />
-    <e p="C:\Users\nacho\OneDrive\Documentos\GitHub\Nonogram-Analisis-de-Algoritmos-\Nonogram" t="IncludeRecursive">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Pruebas" t="Include">
-          <e p="nonogram 10 x 10 2.0.txt" t="Include" />
-          <e p="nonogram 10 x 10 with 0.txt" t="Include" />
-          <e p="Nonogram Palmera 15 x 15.txt" t="Include" />
-          <e p="Nonogram_Arbol_Navidad_25_x_20.txt" t="Include" />
-          <e p="Prueba (10x10).txt" t="Include" />
-          <e p="Prueba (15x20) cheton.txt" t="Include" />
+          <e p="Christmas Tree (15x15).txt" t="Include" />
+          <e p="Crazy Bitch (15x15).txt" t="Include" />
+          <e p="Dog (10x10).txt" t="Include" />
+          <e p="Duck Scorpion (10x10).txt" t="Include" />
+          <e p="Face (15x20).txt" t="Include" />
+          <e p="Palm Tree (15x15).txt" t="Include" />
+          <e p="Peasent (10x10).txt" t="Include" />
           <e p="Prueba (20x20).txt" t="Include" />
-          <e p="Prueba (4x4).txt" t="Include" />
+          <e p="Prueba (4x3) No Solution.txt" t="Include" />
           <e p="Prueba (8x8).txt" t="Include" />
-          <e p="Prueba(15x15) perra loca.txt" t="Include" />
-          <e p="Prueba(15x15).txt" t="Include" />
-          <e p="pruebaNonogram perrito.txt" t="Include" />
+          <e p="Prueba(15x15) No Solution.txt" t="Include" />
+          <e p="Pruebas" t="Include">
+            <e p="10x10_45.txt" t="Include" />
+            <e p="10x10_45_tablero.txt" t="Include" />
+            <e p="10x10_55.txt" t="Include" />
+            <e p="10x10_55_tablero.txt" t="Include" />
+            <e p="10x10_65.txt" t="Include" />
+            <e p="10x10_65_tablero.txt" t="Include" />
+            <e p="15x15_45.txt" t="Include" />
+            <e p="15x15_45_tablero.txt" t="Include" />
+            <e p="15x15_55.txt" t="Include" />
+            <e p="15x15_55_tablero.txt" t="Include" />
+            <e p="15x15_65.txt" t="Include" />
+            <e p="15x15_65_tablero.txt" t="Include" />
+            <e p="20x20_45.txt" t="Include" />
+            <e p="20x20_45_tablero.txt" t="Include" />
+            <e p="20x20_55.txt" t="Include" />
+            <e p="20x20_55_tablero.txt" t="Include" />
+            <e p="20x20_65.txt" t="Include" />
+            <e p="20x20_65_tablero.txt" t="Include" />
+            <e p="5x5_45.txt" t="Include" />
+            <e p="5x5_45_tablero.txt" t="Include" />
+            <e p="5x5_55.txt" t="Include" />
+            <e p="5x5_55_tablero.txt" t="Include" />
+            <e p="5x5_65.txt" t="Include" />
+            <e p="5x5_65_tablero.txt" t="Include" />
+          </e>
+          <e p="Shopping Cart (10x10).txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="InGameScripts.cs" t="Include" />
@@ -99,7 +123,9 @@
       <e p="Nonogram.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
     </e>
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_Nonogram.2119369957.00" t="ExcludeRecursive" />
   </component>
 </project>
